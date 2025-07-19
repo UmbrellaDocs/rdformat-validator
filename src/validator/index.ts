@@ -468,7 +468,7 @@ export class Validator {
         position: any,
         path: string,
         errors: ValidationError[],
-        warnings: ValidationWarning[]
+        _warnings: ValidationWarning[]
     ): void {
         if (typeof position.line !== 'number' || position.line < 1) {
             errors.push(this.errorReporter.createError(
@@ -770,7 +770,7 @@ export class Validator {
         warnings: ValidationWarning[]
     ): void {
         // Only add specific validation if we don't already have errors for the same issues
-        const existingErrorPaths = new Set(errors.map(e => e.path));
+        const _existingErrorPaths = new Set(errors.map(e => e.path));
 
         // Handle single diagnostic objects
         if (this.isPartialDiagnostic(data)) {
@@ -900,7 +900,7 @@ export class Validator {
         position: any,
         path: string,
         errors: ValidationError[],
-        warnings: ValidationWarning[]
+        _warnings: ValidationWarning[]
     ): void {
         if (typeof position.line !== 'number' || position.line < 1) {
             // Replace generic error with specific position error
