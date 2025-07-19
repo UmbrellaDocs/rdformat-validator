@@ -30,7 +30,7 @@ jobs:
       run: npm run build:check
 
     - name: Run tests
-      run: npm run test:coverage
+      run: npm test
 
     - name: Build project
       run: npm run build
@@ -40,14 +40,6 @@ jobs:
         ./bin/rdformat-validator.js --version
         ./bin/rdformat-validator.js --help
         echo '{"source":{"name":"test","path":"test.js"},"diagnostics":[]}' | ./bin/rdformat-validator.js --stdin
-
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
-      with:
-        file: ./coverage/lcov.info
-        flags: unittests
-        name: codecov-umbrella
-        fail_ci_if_error: false
 
   package:
     runs-on: ubuntu-latest
