@@ -17,19 +17,19 @@
     - Test schema against various edge cases
     - _Requirements: 1.5, 1.6, 7.1, 7.2_
 
-- [ ] 3. Implement core parser module
-  - [ ] 3.1 Create parser class with string, file, and stream input support
+- [x] 3. Implement core parser module
+  - [x] 3.1 Create parser class with string, file, and stream input support
     - Implement parseString method for string input
     - Implement parseFile method for file input
     - Implement parseStream method for stream input
     - _Requirements: 1.1, 5.2, 5.3, 6.1_
   
-  - [ ] 3.2 Add error handling for malformed JSON
+  - [x] 3.2 Add error handling for malformed JSON
     - Implement graceful error handling for parsing errors
     - Provide detailed error messages for parsing failures
     - _Requirements: 2.1, 2.2, 2.3, 6.2_
   
-  - [ ] 3.3 Write unit tests for parser module
+  - [x] 3.3 Write unit tests for parser module
     - Test parsing of valid JSON inputs
     - Test handling of malformed JSON inputs
     - Test handling of edge cases (empty input, large files)

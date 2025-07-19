@@ -8,6 +8,9 @@ export * from './types/rdformat';
 export * from './types/validation';
 export * from './types/schema';
 
+// Export parser module
+export * from './parser';
+
 // Main validator class (placeholder for now)
 export class RDFormatValidator {
   constructor(options?: any) {
