@@ -32,17 +32,17 @@ __exportStar(require("./types/rdformat"), exports);
 __exportStar(require("./types/validation"), exports);
 __exportStar(require("./types/schema"), exports);
 // Export parser module
-__exportStar(require("./parser/index"), exports);
+__exportStar(require("./parser"), exports);
 // Export validator module
-__exportStar(require("./validator/index"), exports);
+__exportStar(require("./validator"), exports);
 // Export fixer module
-__exportStar(require("./fixer/index"), exports);
+__exportStar(require("./fixer"), exports);
 // Export CLI module
-__exportStar(require("./cli/index"), exports);
+__exportStar(require("./cli"), exports);
 // Import required modules
-const index_1 = require("./parser/index");
-const index_2 = require("./validator/index");
-const index_3 = require("./fixer/index");
+const parser_1 = require("./parser");
+const validator_1 = require("./validator");
+const fixer_1 = require("./fixer");
 const schema_1 = require("./types/schema");
 /**
  * Main RDFormat Validator class providing comprehensive validation functionality
@@ -87,14 +87,14 @@ class RDFormatValidator {
             ...options
         };
         // Initialize components with appropriate options
-        this.parser = new index_1.Parser({
+        this.parser = new parser_1.Parser({
             strictMode: this.options.strictMode
         });
-        this.validator = new index_2.Validator({
+        this.validator = new validator_1.Validator({
             strictMode: this.options.strictMode,
             allowExtraFields: this.options.allowExtraFields
         });
-        this.fixer = new index_3.Fixer({
+        this.fixer = new fixer_1.Fixer({
             strictMode: this.options.strictMode,
             fixLevel: this.options.fixLevel
         });
@@ -339,14 +339,14 @@ class RDFormatValidator {
             ...options
         };
         // Recreate components with new options
-        this.parser = new index_1.Parser({
+        this.parser = new parser_1.Parser({
             strictMode: this.options.strictMode
         });
-        this.validator = new index_2.Validator({
+        this.validator = new validator_1.Validator({
             strictMode: this.options.strictMode,
             allowExtraFields: this.options.allowExtraFields
         });
-        this.fixer = new index_3.Fixer({
+        this.fixer = new fixer_1.Fixer({
             strictMode: this.options.strictMode,
             fixLevel: this.options.fixLevel
         });

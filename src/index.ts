@@ -9,21 +9,21 @@ export * from './types/validation';
 export * from './types/schema';
 
 // Export parser module
-export * from './parser/index';
+export * from './parser';
 
 // Export validator module
-export * from './validator/index';
+export * from './validator';
 
 // Export fixer module
-export * from './fixer/index';
+export * from './fixer';
 
 // Export CLI module
-export * from './cli/index';
+export * from './cli';
 
 // Import required modules
-import { Parser } from './parser/index';
-import { Validator } from './validator/index';
-import { Fixer } from './fixer/index';
+import { Parser } from './parser';
+import { Validator } from './validator';
+import { Fixer } from './fixer';
 import {
   RDFormatValidatorOptions,
   RDFormatValidatorResult
