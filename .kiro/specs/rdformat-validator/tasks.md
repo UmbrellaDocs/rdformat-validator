@@ -144,17 +144,20 @@
     - _Requirements: 8.3, 8.4_
 
 - [ ] 9. Package and publish
-  - [ ] 9.1 Set up build process
+  - [x] 9.1 Set up build process
+    - Configure TypeScript compilation to output ES modules
     - Configure TypeScript compilation
-    - Set up bundling for browser usage
+    - Set up bundling for CLI usage
     - _Requirements: 4.1, 4.3_
 
-  - [ ] 9.2 Configure npm package
+  - [x] 9.2 Configure npm package
     - Set up package.json with correct metadata
+    - Add scripts for building, testing, and linting
     - Configure bin entry for CLI usage
     - _Requirements: 4.1, 5.1_
 
   - [ ] 9.3 Create release workflow
-    - Set up automated testing
-    - Configure version management
+    - Configure version management with semantic versioning
+    - Set up GitHub Actions for automated testing
+    - Set up GitHub Actions for automated releases
     - _Requirements: 6.3, 6.4, 6.5_
