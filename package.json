@@ -48,11 +48,7 @@
     "prepublishOnly": "npm run validate && npm run build",
     "postpublish": "echo 'Package published successfully!'",
     "preversion": "npm run validate",
-    "postversion": "git push && git push --tags",
-    "release": "semantic-release",
-    "release:dry": "semantic-release --dry-run",
-    "release:debug": "semantic-release --debug",
-    "release:local": "semantic-release --extends ./.releaserc.local.json --dry-run"
+    "postversion": "git push && git push --tags"
   },
   "keywords": [
     "reviewdog",
@@ -91,19 +87,13 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.31.0",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^11.0.3",
-    "@semantic-release/npm": "^12.0.2",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.0.15",
     "@typescript-eslint/eslint-plugin": "^8.37.0",
     "@typescript-eslint/parser": "^8.37.0",
-    "conventional-changelog-conventionalcommits": "^9.1.0",
     "eslint": "^9.31.0",
     "jest": "^30.0.4",
     "rimraf": "^6.0.1",
-    "semantic-release": "^24.2.7",
     "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
