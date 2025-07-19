@@ -11,6 +11,12 @@ export * from './types/schema';
 // Export parser module
 export * from './parser';
 
+// Export validator module
+export * from './validator';
+
+// Export fixer module
+export * from './fixer';
+
 // Main validator class (placeholder for now)
 export class RDFormatValidator {
   constructor(options?: any) {
