@@ -39,7 +39,7 @@ jobs:
       run: |
         ./bin/rdformat-validator.js --version
         ./bin/rdformat-validator.js --help
-        echo '{"source":{"name":"test","path":"test.js"},"diagnostics":[]}' | ./bin/rdformat-validator.js --stdin
+        echo '{"source":{"name":"test","path":"test.js"},"diagnostics":[]}' | ./bin/rdformat-validator.js
 
   package:
     runs-on: ubuntu-latest
