@@ -1,0 +1,41 @@
+{
+  "name": "rdformat-validator",
+  "version": "1.0.0",
+  "description": "Validator for Reviewdog Diagnostic Format",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "rdformat-validator": "bin/rdformat-validator.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "dev": "ts-node src/index.ts"
+  },
+  "keywords": [
+    "reviewdog",
+    "validator",
+    "diagnostic",
+    "format",
+    "json"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "commander": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.15",
+    "@typescript-eslint/eslint-plugin": "^8.37.0",
+    "@typescript-eslint/parser": "^8.37.0",
+    "eslint": "^9.31.0",
+    "jest": "^30.0.4",
+    "@types/jest": "^30.0.0",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "license": "MIT"
+}
