@@ -5,10 +5,10 @@
 export * from './types/rdformat';
 export * from './types/validation';
 export * from './types/schema';
-export * from './parser';
-export * from './validator';
-export * from './fixer';
-export * from './cli';
+export * from './parser/index';
+export * from './validator/index';
+export * from './fixer/index';
+export * from './cli/index';
 import { RDFormatValidatorOptions, RDFormatValidatorResult } from './types/validation';
 import { JSONSchema } from './types/schema';
 /**
