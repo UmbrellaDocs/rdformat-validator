@@ -1,7 +1,8 @@
 {
-  "name": "rdformat-validator",
+  "name": "@umbrelladocs/rdformat-validator",
   "version": "1.0.0",
-  "description": "Validator for Reviewdog Diagnostic Format",
+  "description": "Validate and fix Reviewdog Diagnostic Format (RD Format)",
+  "author": "Gaurav Nelson",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
@@ -37,5 +38,9 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
-  "license": "MIT"
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/UmbrellaDocs/rdformat-validator/issues"
+  },
+  "homepage": "https://github.com/UmbrellaDocs/rdformat-validator#readme"
 }
