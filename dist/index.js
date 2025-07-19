@@ -25,6 +25,8 @@ exports.validateAndFix = validateAndFix;
 __exportStar(require("./types/rdformat"), exports);
 __exportStar(require("./types/validation"), exports);
 __exportStar(require("./types/schema"), exports);
+// Export parser module
+__exportStar(require("./parser"), exports);
 // Main validator class (placeholder for now)
 class RDFormatValidator {
     constructor(options) {

@@ -5,6 +5,7 @@
 export * from './types/rdformat';
 export * from './types/validation';
 export * from './types/schema';
+export * from './parser';
 export declare class RDFormatValidator {
     constructor(options?: any);
 }

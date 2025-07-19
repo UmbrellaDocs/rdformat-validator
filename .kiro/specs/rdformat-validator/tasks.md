@@ -35,25 +35,25 @@
     - Test handling of edge cases (empty input, large files)
     - _Requirements: 6.2, 6.3, 7.1, 7.2_
 
-- [ ] 4. Implement core validator module
-  - [ ] 4.1 Create validator class with validation options
+- [x] 4. Implement core validator module
+  - [x] 4.1 Create validator class with validation options
     - Implement validate method for validating parsed data
     - Add support for strict and non-strict validation modes
     - _Requirements: 1.1, 1.2, 1.3, 1.4_
   
-  - [ ] 4.2 Implement detailed error reporting
+  - [x] 4.2 Implement detailed error reporting
     - Create structured validation error objects
     - Include path information in error messages
     - Provide clear descriptions of validation failures
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5_
   
-  - [ ] 4.3 Add support for edge case handling
+  - [x] 4.3 Add support for edge case handling
     - Implement handling for empty input
     - Add validation for partial or incomplete RDFormat data
     - Handle extra fields not in the specification
     - _Requirements: 7.1, 7.2, 7.3, 7.4_
   
-  - [ ] 4.4 Write unit tests for validator module
+  - [x] 4.4 Write unit tests for validator module
     - Test validation of valid RDFormat data
     - Test validation of invalid RDFormat data
     - Test edge case handling
