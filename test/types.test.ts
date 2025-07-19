@@ -62,7 +62,8 @@ describe('RDFormat Types', () => {
 
   test('Schema should be defined', () => {
     expect(rdformatSchema).toBeDefined();
-    expect(rdformatSchema.type).toBe('object');
-    expect(rdformatSchema.properties.diagnostics).toBeDefined();
+    expect(rdformatSchema.title).toBe('Reviewdog Diagnostic Format');
+    expect(rdformatSchema.oneOf).toBeDefined();
+    expect(rdformatSchema.oneOf).toHaveLength(3);
   });
 });

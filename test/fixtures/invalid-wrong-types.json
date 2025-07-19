@@ -1,0 +1,13 @@
+{
+  "message": 123,
+  "location": {
+    "path": "src/test.js",
+    "range": {
+      "start": {
+        "line": "not-a-number",
+        "column": 1
+      }
+    }
+  },
+  "severity": "INVALID_SEVERITY"
+}

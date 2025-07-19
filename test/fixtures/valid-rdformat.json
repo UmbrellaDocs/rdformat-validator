@@ -1,0 +1,58 @@
+[
+  {
+    "message": "Line too long",
+    "location": {
+      "path": "src/main.js",
+      "range": {
+        "start": { "line": 10, "column": 1 },
+        "end": { "line": 10, "column": 120 }
+      }
+    },
+    "severity": "WARNING",
+    "source": {
+      "name": "eslint",
+      "url": "https://eslint.org"
+    },
+    "code": {
+      "value": "max-len",
+      "url": "https://eslint.org/docs/rules/max-len"
+    },
+    "suggestions": [
+      {
+        "range": {
+          "start": { "line": 10, "column": 80 },
+          "end": { "line": 10, "column": 80 }
+        },
+        "text": "\n  "
+      }
+    ]
+  },
+  {
+    "message": "Unused variable 'x'",
+    "location": {
+      "path": "src/utils.js",
+      "range": {
+        "start": { "line": 5, "column": 7 }
+      }
+    },
+    "severity": "ERROR",
+    "source": {
+      "name": "eslint"
+    },
+    "code": {
+      "value": "no-unused-vars"
+    },
+    "original_output": "5:7  error  'x' is defined but never used  no-unused-vars",
+    "related_locations": [
+      {
+        "message": "Variable declared here",
+        "location": {
+          "path": "src/utils.js",
+          "range": {
+            "start": { "line": 5, "column": 7 }
+          }
+        }
+      }
+    ]
+  }
+]

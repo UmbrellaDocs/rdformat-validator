@@ -1,0 +1,33 @@
+{
+  "diagnostics": [
+    {
+      "message": "Missing semicolon",
+      "location": {
+        "path": "src/app.js",
+        "range": {
+          "start": { "line": 15, "column": 25 }
+        }
+      },
+      "severity": "ERROR",
+      "source": {
+        "name": "jshint"
+      }
+    },
+    {
+      "message": "Prefer const over let",
+      "location": {
+        "path": "src/app.js",
+        "range": {
+          "start": { "line": 3, "column": 1 },
+          "end": { "line": 3, "column": 4 }
+        }
+      },
+      "severity": "INFO"
+    }
+  ],
+  "source": {
+    "name": "multi-linter",
+    "url": "https://example.com/multi-linter"
+  },
+  "severity": "ERROR"
+}

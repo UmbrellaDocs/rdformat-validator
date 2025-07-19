@@ -6,13 +6,13 @@
   - Define core interfaces based on the RDFormat specification
   - _Requirements: 1.1, 1.2, 1.3, 4.3_
 
-- [-] 2. Implement schema definition
-  - [-] 2.1 Create JSON schema for RDFormat validation
+- [x] 2. Implement schema definition
+  - [x] 2.1 Create JSON schema for RDFormat validation
     - Define the complete JSON schema based on the protobuf definition
     - Include all required fields, types, and constraints
     - _Requirements: 1.2, 1.3, 1.4_
   
-  - [ ] 2.2 Write unit tests for schema validation
+  - [x] 2.2 Write unit tests for schema validation
     - Create test fixtures with valid and invalid RDFormat examples
     - Test schema against various edge cases
     - _Requirements: 1.5, 1.6, 7.1, 7.2_
