@@ -211,7 +211,16 @@ exports.rdformatSchema = {
         }
     ]
 };
-// Utility function to get schema by name
+/**
+ * Utility function to get a specific schema by name
+ * @param schemaName - Name of the schema to retrieve
+ * @returns The requested schema or undefined if not found
+ * @example
+ * ```typescript
+ * const diagnosticSchema = getSchema('diagnostic');
+ * const positionSchema = getSchema('position');
+ * ```
+ */
 function getSchema(schemaName) {
     const schemas = {
         position: positionSchema,
@@ -226,7 +235,18 @@ function getSchema(schemaName) {
     };
     return schemas[schemaName];
 }
-// Utility function to validate schema structure
+/**
+ * Type guard to validate if an object is a valid JSON Schema
+ * @param schema - Object to validate
+ * @returns True if the object is a valid JSON Schema structure
+ * @example
+ * ```typescript
+ * if (isValidSchema(someObject)) {
+ *   // someObject is now typed as JSONSchema
+ *   console.log(someObject.type);
+ * }
+ * ```
+ */
 function isValidSchema(schema) {
     return typeof schema === 'object' &&
         schema !== null &&

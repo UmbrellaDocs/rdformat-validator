@@ -2,8 +2,18 @@
 
 /**
  * CLI entry point for RDFormat Validator
- * This will be implemented in a later task
+ * Executable script that loads and runs the CLI module
  */
 
-console.log('RDFormat Validator CLI - Implementation coming soon');
-process.exit(0);
+// Import the compiled CLI module
+const { main } = require('../dist/cli/index.js');
+
+// Execute the CLI with command-line arguments
+main(process.argv)
+  .then(exitCode => {
+    process.exit(exitCode);
+  })
+  .catch(error => {
+    console.error('Fatal error:', error.message || error);
+    process.exit(1);
+  });

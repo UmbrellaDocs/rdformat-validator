@@ -17,6 +17,9 @@ export * from './validator';
 // Export fixer module
 export * from './fixer';
 
+// Export CLI module
+export * from './cli';
+
 // Import required modules
 import { Parser } from './parser';
 import { Validator } from './validator';
