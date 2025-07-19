@@ -24,8 +24,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **TypeScript Support**: Full type definitions included
 - **Error Fixing**: Automatic correction of common formatting issues
 - **Comprehensive Validation**: Validates against the complete RDFormat specification
-- **Performance**: Efficient handling of large files
-- **Cross-platform**: Works on Windows, macOS, and Linux
 
 ## [1.0.0] - 2025-07-19
 

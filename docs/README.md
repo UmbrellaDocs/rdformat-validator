@@ -467,4 +467,4 @@ Contributions are welcome! Please read our contributing guidelines and submit pu
 
 - [Reviewdog Project](https://github.com/reviewdog/reviewdog)
 - [RDFormat Specification](https://github.com/reviewdog/reviewdog/blob/master/proto/rdf/reviewdog.proto)
-- [NPM Package](https://www.npmjs.com/package/@umbrelladocs/rdformat-validator)
+- [NPM Package](https://www.npmjs.com/package/rdformat-validator)
