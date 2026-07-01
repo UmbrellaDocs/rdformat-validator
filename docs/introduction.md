@@ -1,3 +1,9 @@
+---
+title: Introduction
+description: Validate and fix Reviewdog Diagnostic Format (RDFormat) JSON data with a Node.js library and CLI.
+tag: Guide
+---
+
 # RDFormat Validator
 
 A NodeJS library and CLI tool for validating JSON data against the [Reviewdog Diagnostic Format](https://github.com/reviewdog/reviewdog/blob/master/proto/rdf/reviewdog.proto) specification.

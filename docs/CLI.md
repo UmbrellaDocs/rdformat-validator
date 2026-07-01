@@ -1,3 +1,9 @@
+---
+title: CLI Reference
+description: Command-line interface for validating and fixing RDFormat JSON files.
+tag: Reference
+---
+
 # CLI Documentation
 
 ## Overview

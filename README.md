@@ -456,17 +456,21 @@ app.post('/diagnostics', validateRDFormat, (req, res) => {
 
 ## Documentation
 
-Browse the full documentation locally with [Docsify](https://docsify.js.org/):
+Browse the full documentation locally with [DocsLit](https://docslit.com):
 
 ```bash
-npx serve docs
+npm install
+npm run docs:dev
 # Open http://localhost:3000
 ```
 
+Published docs: [umbrelladocs.github.io/rdformat-validator](https://umbrelladocs.github.io/rdformat-validator/)
+
 See also:
 
-- [API Reference](docs/API.md)
-- [CLI Reference](docs/CLI.md)
+- [Introduction](docs/introduction.md)
+- [API Reference](docs/api.md)
+- [CLI Reference](docs/cli.md)
 
 ## License
 

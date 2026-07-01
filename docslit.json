@@ -1,0 +1,15 @@
+{
+  "name": "RDFormat Validator",
+  "description": "Validate and fix Reviewdog Diagnostic Format (RDFormat) JSON data",
+  "url": "https://umbrelladocs.github.io/rdformat-validator",
+  "sidebar": [
+    {
+      "group": "Documentation",
+      "pages": [
+        "introduction",
+        "api",
+        "cli"
+      ]
+    }
+  ]
+}

@@ -1,3 +1,9 @@
+---
+title: API Reference
+description: Library API for validating and fixing Reviewdog Diagnostic Format JSON data.
+tag: Reference
+---
+
 # API Documentation
 
 ## Table of Contents

@@ -35,6 +35,9 @@ jobs:
     - name: Run tests
       run: npm test
 
+    - name: Validate docs
+      run: npm run docs:validate
+
     - name: Test CLI functionality
       run: |
         ./bin/rdformat-validator.js --version

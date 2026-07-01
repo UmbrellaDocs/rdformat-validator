@@ -132,5 +132,4 @@ dist
 # Linkspector
 .linkspector.yml
 
-# Kiro
-.kiro/
+./dist/

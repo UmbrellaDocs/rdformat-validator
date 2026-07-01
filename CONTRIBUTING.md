@@ -119,7 +119,7 @@ Tests run with Jest using the dedicated `tsconfig.test.json` configuration.
 
 - Update README.md for new features
 - Add JSDoc comments for public APIs
-- Update CLI documentation in docs/CLI.md
+- Update CLI documentation in docs/cli.md
 - Add examples for new functionality
 
 ## Release Process
