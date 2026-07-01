@@ -507,6 +507,54 @@ describe('Fixer', () => {
         });
     });
 
+    describe('prototype pollution protection', () => {
+        const unsafePaths = [
+            '__proto__.polluted',
+            'constructor.prototype.polluted',
+            'location.__proto__.polluted'
+        ];
+
+        unsafePaths.forEach((path) => {
+            it(`should not pollute Object.prototype via path '${path}'`, () => {
+                const pollutedKey = 'polluted';
+                delete (Object.prototype as Record<string, unknown>)[pollutedKey];
+
+                const data = {};
+                const validationResult: ValidationResult = {
+                    valid: false,
+                    errors: [{
+                        path,
+                        code: ValidationErrorCode.REQUIRED_PROPERTY_MISSING,
+                        message: 'Missing property',
+                        expected: 'string'
+                    }],
+                    warnings: []
+                };
+
+                const result = fixer.fix(data, validationResult);
+
+                expect(result.fixed).toBe(false);
+                expect(Object.prototype.hasOwnProperty.call({}, pollutedKey)).toBe(false);
+                expect(({} as Record<string, unknown>)[pollutedKey]).toBeUndefined();
+            });
+        });
+
+        it('should not pollute Object.prototype when setValueAtPath receives unsafe keys directly', () => {
+            const pollutedKey = 'polluted';
+            delete (Object.prototype as Record<string, unknown>)[pollutedKey];
+
+            const targetFixer = new Fixer();
+            const setValueAtPath = (targetFixer as unknown as {
+                setValueAtPath: (obj: object, pathParts: string[], value: unknown) => boolean;
+            }).setValueAtPath;
+            const didSet = setValueAtPath.call(targetFixer, {}, ['__proto__', pollutedKey], 'yes');
+
+            expect(didSet).toBe(false);
+            expect(Object.prototype.hasOwnProperty.call({}, pollutedKey)).toBe(false);
+            expect(({} as Record<string, unknown>)[pollutedKey]).toBeUndefined();
+        });
+    });
+
     describe('edge cases', () => {
         it('should handle null and undefined values', () => {
             const data = { message: null };

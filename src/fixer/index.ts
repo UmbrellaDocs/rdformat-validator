@@ -11,6 +11,8 @@ import {
 } from '../types/validation';
 import { ValidationErrorCode } from '../validator/index';
 
+const UNSAFE_PATH_KEYS = new Set(['__proto__', 'constructor', 'prototype']);
+
 /**
  * Fixer class that can automatically correct common validation errors
  */
@@ -202,7 +204,9 @@ export class Fixer {
         }
 
         if (fixedValue !== undefined) {
-            this.setValueAtPath(data, pathParts, fixedValue);
+            if (!this.setValueAtPath(data, pathParts, fixedValue)) {
+                return undefined;
+            }
             return fixedValue;
         }
 
@@ -266,7 +270,9 @@ export class Fixer {
                 }
         }
 
-        this.setValueAtPath(data, pathParts, defaultValue);
+        if (!this.setValueAtPath(data, pathParts, defaultValue)) {
+            return undefined;
+        }
         return defaultValue;
     }
 
@@ -295,7 +301,9 @@ export class Fixer {
                 defaultValue = 'unknown';
         }
 
-        this.setValueAtPath(data, pathParts, defaultValue);
+        if (!this.setValueAtPath(data, pathParts, defaultValue)) {
+            return undefined;
+        }
         return defaultValue;
     }
 
@@ -324,7 +332,9 @@ export class Fixer {
             return undefined;
         }
 
-        this.setValueAtPath(data, pathParts, fixedValue);
+        if (!this.setValueAtPath(data, pathParts, fixedValue)) {
+            return undefined;
+        }
         return fixedValue;
     }
 
@@ -361,7 +371,9 @@ export class Fixer {
             fixedValue = 'UNKNOWN_SEVERITY';
         }
 
-        this.setValueAtPath(data, pathParts, fixedValue);
+        if (!this.setValueAtPath(data, pathParts, fixedValue)) {
+            return undefined;
+        }
         return fixedValue;
     }
 
@@ -386,7 +398,9 @@ export class Fixer {
                 return undefined;
             }
 
-            this.setValueAtPath(data, pathParts, fixedValue);
+            if (!this.setValueAtPath(data, pathParts, fixedValue)) {
+                return undefined;
+            }
             return fixedValue;
         }
 
@@ -402,10 +416,17 @@ export class Fixer {
         return path.split(/[.[\]]/).filter(part => part !== '');
     }
 
+    private isSafePathKey(key: string): boolean {
+        return !UNSAFE_PATH_KEYS.has(key);
+    }
+
     private getValueAtPath(obj: any, pathParts: string[]): any {
         let current = obj;
 
         for (const part of pathParts) {
+            if (!this.isSafePathKey(part)) {
+                return undefined;
+            }
             if (current === null || current === undefined) {
                 return undefined;
             }
@@ -415,8 +436,14 @@ export class Fixer {
         return current;
     }
 
-    private setValueAtPath(obj: any, pathParts: string[], value: any): void {
-        if (pathParts.length === 0) return;
+    private setValueAtPath(obj: any, pathParts: string[], value: any): boolean {
+        if (pathParts.length === 0) return false;
+
+        for (const part of pathParts) {
+            if (!this.isSafePathKey(part)) {
+                return false;
+            }
+        }
 
         let current = obj;
 
@@ -436,6 +463,7 @@ export class Fixer {
         // Set the final value
         const finalPart = pathParts[pathParts.length - 1];
         current[finalPart] = value;
+        return true;
     }
 
     private deepClone(obj: any): any {
