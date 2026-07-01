@@ -300,12 +300,12 @@ Examples:
       if (error instanceof Error && 'code' in error) {
         const nodeError = error as NodeJS.ErrnoException;
         if (nodeError.code === 'ENOENT') {
-          throw new Error(`File not found: ${filePath}`);
+          throw new Error(`File not found: ${filePath}`, { cause: error });
         } else if (nodeError.code === 'EACCES') {
-          throw new Error(`Permission denied: ${filePath}`);
+          throw new Error(`Permission denied: ${filePath}`, { cause: error });
         }
       }
-      throw new Error(`Cannot access file: ${filePath} - ${error instanceof Error ? error.message : 'Unknown error'}`);
+      throw new Error(`Cannot access file: ${filePath} - ${error instanceof Error ? error.message : 'Unknown error'}`, { cause: error });
     }
 
     // Validate the file
@@ -538,7 +538,7 @@ Examples:
           console.log(`Results written to: ${options.output}`);
         }
       } catch (error) {
-        throw new Error(`Failed to write output file: ${error instanceof Error ? error.message : 'Unknown error'}`);
+        throw new Error(`Failed to write output file: ${error instanceof Error ? error.message : 'Unknown error'}`, { cause: error });
       }
     } else {
       // Write to stdout
@@ -563,7 +563,7 @@ Examples:
         console.log(`Fixed data written to: ${outputPath}`);
       }
     } catch (error) {
-      throw new Error(`Failed to write fixed data: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      throw new Error(`Failed to write fixed data: ${error instanceof Error ? error.message : 'Unknown error'}`, { cause: error });
     }
   }
 

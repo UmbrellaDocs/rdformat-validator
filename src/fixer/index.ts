@@ -103,48 +103,41 @@ export class Fixer {
         const pathParts = this.parsePath(error.path);
         const before = this.getValueAtPath(data, pathParts);
 
-        let fixed = false;
         let after: any;
 
         switch (error.code) {
             case ValidationErrorCode.TYPE_MISMATCH:
                 after = this.fixTypeMismatch(data, pathParts, error);
-                fixed = after !== undefined;
                 break;
 
             case ValidationErrorCode.REQUIRED_PROPERTY_MISSING:
             case ValidationErrorCode.MISSING_DIAGNOSTIC_MESSAGE:
             case ValidationErrorCode.MISSING_DIAGNOSTIC_LOCATION:
                 after = this.fixMissingProperty(data, pathParts, error);
-                fixed = after !== undefined;
                 break;
 
             case ValidationErrorCode.EMPTY_STRING:
                 after = this.fixEmptyString(data, pathParts, error);
-                fixed = after !== undefined;
                 break;
 
             case ValidationErrorCode.MIN_VALUE_VIOLATION:
             case ValidationErrorCode.MAX_VALUE_VIOLATION:
                 after = this.fixNumberViolation(data, pathParts, error);
-                fixed = after !== undefined;
                 break;
 
             case ValidationErrorCode.INVALID_SEVERITY:
                 after = this.fixInvalidSeverity(data, pathParts, error);
-                fixed = after !== undefined;
                 break;
 
             case ValidationErrorCode.INVALID_POSITION:
                 after = this.fixInvalidPosition(data, pathParts, error);
-                fixed = after !== undefined;
                 break;
 
             default:
                 return null;
         }
 
-        if (fixed) {
+        if (after !== undefined) {
             return {
                 path: error.path,
                 message: this.getFixMessage(error.code, before, after),
