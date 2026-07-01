@@ -233,10 +233,10 @@ File Results:
 -------------
 ✗ diagnostics.json (2 errors, 1 warning, 1 fix)
   Errors:
-    ✗ diagnostics[0].location: Missing required field 'path' (MISSING_FIELD)
-    ✗ diagnostics[0].severity: Invalid enum value 'CRITICAL' (INVALID_ENUM_VALUE)
+    ✗ diagnostics[0].location: Missing required field 'path' (REQUIRED_PROPERTY_MISSING)
+    ✗ diagnostics[0].severity: Invalid enum value 'CRITICAL' (ENUM_VALIDATION_FAILED)
   Warnings:
-    ⚠ diagnostics[0].custom_field: Extra field not in specification (EXTRA_FIELD)
+    ⚠ diagnostics[0].custom_field: Extra field not in specification (UNKNOWN_PROPERTY)
   Fixes Applied:
     ✓ diagnostics[0].location.path: Added default value
 
@@ -267,19 +267,19 @@ With `--format json`, structured output is provided:
         {
           "path": "diagnostics[0].location",
           "message": "Missing required field 'path'",
-          "code": "MISSING_FIELD"
+          "code": "REQUIRED_PROPERTY_MISSING"
         },
         {
           "path": "diagnostics[0].severity",
           "message": "Invalid enum value 'CRITICAL'",
-          "code": "INVALID_ENUM_VALUE"
+          "code": "ENUM_VALIDATION_FAILED"
         }
       ],
       "warningDetails": [
         {
           "path": "diagnostics[0].custom_field",
           "message": "Extra field not in specification",
-          "code": "EXTRA_FIELD"
+          "code": "UNKNOWN_PROPERTY"
         }
       ],
       "fixDetails": [

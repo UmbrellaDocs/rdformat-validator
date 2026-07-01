@@ -35,9 +35,6 @@ npx @umbrelladocs/rdformat-validator --help
 ### Library Usage
 
 ```typescript
-import { validate, validateAndFix, RDFormatValidator } from 'rdformat-validator';
-
-```typescript
 import { validate, validateAndFix, RDFormatValidator } from '@umbrelladocs/rdformat-validator';
 
 // Quick validation
@@ -350,10 +347,11 @@ interface ValidationError {
 
 ### Common Error Codes
 
-- `REQUIRED_PROPERTY` - Missing required field
-- `INVALID_TYPE` - Wrong data type
-- `INVALID_FORMAT` - Invalid format (e.g., invalid enum value)
-- `PARSE_ERROR` - JSON parsing error
+- `REQUIRED_PROPERTY_MISSING` - Missing required field
+- `TYPE_MISMATCH` - Wrong data type
+- `ENUM_VALIDATION_FAILED` - Invalid enum value
+- `UNKNOWN_PROPERTY` - Extra field not in specification
+- `INVALID_JSON` / `PARSE_ERROR` - JSON parsing error (`PARSE_ERROR` at the top-level API; `INVALID_JSON` from the validator)
 - `UNEXPECTED_ERROR` - Unexpected system error
 
 ### Error Examples
@@ -387,7 +385,7 @@ import {
   Source,
   Code,
   Suggestion
-} from 'rdformat-validator';
+} from '@umbrelladocs/rdformat-validator';
 ```
 
 ## Integration Examples
@@ -406,11 +404,12 @@ fi
 ### Node.js Script
 
 ```javascript
-const { validateFile } = require('rdformat-validator');
+const { RDFormatValidator } = require('@umbrelladocs/rdformat-validator');
 
 async function validateDiagnostics() {
   try {
-    const result = await validateFile('./output/diagnostics.json');
+    const validator = new RDFormatValidator();
+    const result = await validator.validateFile('./output/diagnostics.json');
     if (!result.valid) {
       console.error('Validation failed:', result.errors);
       process.exit(1);
@@ -428,7 +427,7 @@ validateDiagnostics();
 ### Express.js Middleware
 
 ```javascript
-const { validate } = require('rdformat-validator');
+const { validate } = require('@umbrelladocs/rdformat-validator');
 
 function validateRDFormat(req, res, next) {
   validate(req.body)
@@ -457,7 +456,7 @@ app.post('/diagnostics', validateRDFormat, (req, res) => {
 
 ## License
 
-MIT
+Apache-2.0
 
 ## Contributing
 
@@ -467,4 +466,4 @@ Contributions are welcome! Please read our contributing guidelines and submit pu
 
 - [Reviewdog Project](https://github.com/reviewdog/reviewdog)
 - [RDFormat Specification](https://github.com/reviewdog/reviewdog/blob/master/proto/rdf/reviewdog.proto)
-- [NPM Package](https://www.npmjs.com/package/rdformat-validator)
+- [NPM Package](https://www.npmjs.com/package/@umbrelladocs/rdformat-validator)

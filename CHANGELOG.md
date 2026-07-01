@@ -7,23 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- Initial release
-- Core validation functionality for Reviewdog Diagnostic Format
-- Command-line interface for file validation
-- Support for automatic fixing of common issues
-- Comprehensive error reporting
-- TypeScript type definitions
-- Support for both CommonJS and ES modules
-- Extensive test suite with 100% coverage
+### Fixed
+- Harden Fixer path handling to block prototype pollution via `__proto__`, `constructor`, and `prototype` path segments
 
-### Features
-- **Library API**: Validate RDFormat data programmatically
-- **CLI Tool**: Command-line validation and fixing
-- **Dual Module Support**: Works with both `require()` and `import` patterns
-- **TypeScript Support**: Full type definitions included
-- **Error Fixing**: Automatic correction of common formatting issues
-- **Comprehensive Validation**: Validates against the complete RDFormat specification
+### Changed
+- Publish `src/` in the npm package to support source maps
+- CI runs on Node.js 24.x
+- Jest tests use dedicated `tsconfig.test.json`
+- Release process is manual (`npm version` / `npm publish`) instead of semantic-release
+
+## [1.0.1] - 2026-07-01
+
+### Fixed
+- Harden Fixer paths against prototype pollution
+- Include source files in published package for source map support
 
 ## [1.0.0] - 2025-07-19
 

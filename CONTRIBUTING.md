@@ -6,7 +6,7 @@ We welcome contributions to the RDFormat Validator project! This document provid
 
 1. **Fork and Clone**
    ```bash
-   git clone https://github.com/your-username/rdformat-validator.git
+   git clone https://github.com/UmbrellaDocs/rdformat-validator.git
    cd rdformat-validator
    ```
 
@@ -109,10 +109,11 @@ test: add integration tests for fixer module
 ### Test Structure
 ```
 test/
-├── unit/           # Unit tests
-├── integration/    # Integration tests
+├── *.test.ts       # Unit and integration tests
 └── fixtures/       # Test data files
 ```
+
+Tests run with Jest using the dedicated `tsconfig.test.json` configuration.
 
 ## Documentation
 
@@ -123,12 +124,14 @@ test/
 
 ## Release Process
 
-We use [semantic-release](https://github.com/semantic-release/semantic-release) for automated releases:
+Releases are published manually from the `main` branch:
 
-1. Commits to `main` trigger automated releases
-2. Version numbers follow [Semantic Versioning](https://semver.org/)
-3. CHANGELOG.md is automatically updated
-4. Packages are published to npm automatically
+1. Ensure CI passes and `npm run validate` succeeds
+2. Bump the version with `npm version patch|minor|major` (runs validation via `preversion`)
+3. Publish with `npm publish` (runs `prepublishOnly` validation and build)
+4. Push commits and tags (`postversion` pushes automatically)
+
+Version numbers follow [Semantic Versioning](https://semver.org/). Update `CHANGELOG.md` when cutting a release.
 
 ## Questions?
 

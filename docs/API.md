@@ -4,6 +4,7 @@
 
 - [RDFormatValidator Class](#rdformatvalidator-class)
 - [Convenience Functions](#convenience-functions)
+- [Fixer](#fixer)
 - [Utility Functions](#utility-functions)
 - [Types and Interfaces](#types-and-interfaces)
 - [Error Codes](#error-codes)
@@ -259,6 +260,35 @@ if (result.fixedData) {
   console.log('Data was fixed:', result.fixedData);
   console.log('Applied fixes:', result.appliedFixes);
 }
+```
+
+## Fixer
+
+The fixer module automatically corrects common validation errors. It is used internally by `validateAndFix()` and `RDFormatValidator` when fixing is enabled, and can also be used directly.
+
+### `Fixer` class
+
+```typescript
+import { Fixer } from '@umbrelladocs/rdformat-validator';
+
+const fixer = new Fixer({ fixLevel: 'basic' });
+const result = fixer.fix(data, validationResult);
+```
+
+**Methods:**
+- `fix(data, validationResult)` - Apply fixes and return updated data with applied fix details
+- `canFix(error)` - Check whether a specific validation error can be auto-fixed
+- `applyFix(data, error)` - Apply a single fix for one validation error
+
+Path segments containing `__proto__`, `constructor`, or `prototype` are ignored to prevent prototype pollution when applying fixes.
+
+### Convenience functions
+
+```typescript
+import { createFixer, fixData } from '@umbrelladocs/rdformat-validator';
+
+const fixer = createFixer({ fixLevel: 'aggressive' });
+const result = fixData(data, validationResult, { fixLevel: 'basic' });
 ```
 
 ## Utility Functions
@@ -608,22 +638,23 @@ The validator uses specific error codes to identify different types of validatio
 
 ### Common Error Codes
 
-- `PARSE_ERROR` - Invalid JSON syntax
-- `MISSING_FIELD` - Required field is missing
-- `INVALID_TYPE` - Field has wrong data type
-- `INVALID_VALUE` - Field value is invalid
-- `EMPTY_ARRAY` - Array field is empty when values are required
+- `NULL_INPUT` / `EMPTY_INPUT` - Missing or empty input
+- `INVALID_JSON` / `PARSE_ERROR` - Invalid JSON syntax (`PARSE_ERROR` at the top-level API)
+- `REQUIRED_PROPERTY_MISSING` - Required field is missing
+- `TYPE_MISMATCH` - Field has wrong data type
+- `ENUM_VALIDATION_FAILED` - Value not in allowed enum values
+- `EMPTY_STRING` - String field is empty when a value is required
 - `INVALID_ARRAY_ITEM` - Array contains invalid items
-- `INVALID_ENUM_VALUE` - Value not in allowed enum values
+- `EMPTY_ARRAY` - Array field is empty when values are required
 - `INVALID_RANGE` - Range has invalid start/end positions
 - `INVALID_POSITION` - Position has invalid line/column values
+- `INVALID_SEVERITY` - Invalid severity value
+- `MISSING_DIAGNOSTIC_MESSAGE` / `MISSING_DIAGNOSTIC_LOCATION` - Missing RDFormat fields
 - `UNEXPECTED_ERROR` - Unexpected internal error
 
 ### Warning Codes
 
-- `EXTRA_FIELD` - Extra field not in specification (when `allowExtraFields` is true)
-- `DEPRECATED_FIELD` - Field is deprecated but still supported
-- `EMPTY_STRING` - String field is empty but not required
+- `UNKNOWN_PROPERTY` - Extra field not in specification (reported as a warning when `allowExtraFields` is true)
 
 ## Examples
 
@@ -762,13 +793,15 @@ async function handleValidation(data: any) {
 ### Integration with CI/CD
 
 ```typescript
-import { validateFile } from '@umbrelladocs/rdformat-validator';
+import { RDFormatValidator } from '@umbrelladocs/rdformat-validator';
 
 async function validateInCI(filePath: string): Promise<boolean> {
-  const result = await validateFile(filePath, {
+  const validator = new RDFormatValidator({
     strictMode: true,
     allowExtraFields: false
   });
+
+  const result = await validator.validateFile(filePath);
 
   if (result.valid) {
     console.log('✓ RDFormat validation passed');
