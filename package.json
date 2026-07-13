@@ -100,7 +100,7 @@
     "ts-jest": "^29.4.11",
     "ts-node": "^10.9.2",
     "docslit": "^0.1.10",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   },
   "license": "Apache-2.0",
   "files": [
